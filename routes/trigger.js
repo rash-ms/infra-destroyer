@@ -38,7 +38,7 @@ module.exports = async function (req, res) {
 
   // Step 3: Fetch the most recent runs for this workflow
   const runsResponse = await fetch(
-    `https://api.github.com/repos/${process.env.REPO}/actions/workflows/terraform-destroy.yml/runs?event=workflow_dispatch&per_page=1`,
+    `https://api.github.com/repos/${process.env.REPO}/actions/workflows/aws-infra-destroyer.yaml/runs?event=workflow_dispatch&per_page=1`,
     {
       headers: {
         Authorization: `Bearer ${process.env.GITHUB_PAT}`,
