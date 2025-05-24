@@ -9,6 +9,7 @@ module.exports = async function (req, res) {
   console.log("Received token:", `"${token}"`);
   console.log("Expected token:", `"${process.env.APPROVAL_TOKEN}"`);
   console.log("Match:", token === process.env.APPROVAL_TOKEN);
+  console.log("Received infra_dir:", `"${infra_dir}"`);
 
   if (token !== process.env.APPROVAL_TOKEN) {
     return res.status(403).send("Invalid token");
