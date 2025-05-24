@@ -3,7 +3,8 @@ const fetch = require("node-fetch");
 module.exports = async function (req, res) {
   // const { token, infra_dir } = req.body;
   const token = req.body?.token || req.query?.token;
-  const infra_dir = req.body?.infra_dir || req.query?.infra_dir;
+  // const infra_dir = req.body?.infra_dir || req.query?.infra_dir;
+  const infra_dir = req.body.infra_dir;
 
   // Debug the token mismatch
   console.log("Received token:", `"${token}"`);
@@ -18,6 +19,7 @@ module.exports = async function (req, res) {
   if (!infra_dir) {
     return res.status(400).send("Missing 'infra_dir' in the request.");
   }
+
   // Step 1: Trigger the destroy workflow
   const dispatchResponse = await fetch(
     `https://api.github.com/repos/${process.env.REPO}/actions/workflows/aws-infra-destroyer.yaml/dispatches`,
