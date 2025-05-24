@@ -10,7 +10,8 @@ const triggerRoute = require("./routes/trigger");
 
 // Use them
 app.post("/schedule", scheduleRoute);
-app.get("/trigger", triggerRoute);
+// app.get("/trigger", triggerRoute);
+app.post("/trigger", triggerRoute);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

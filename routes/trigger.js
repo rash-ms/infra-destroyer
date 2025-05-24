@@ -17,9 +17,9 @@ module.exports = async function (req, res) {
     return res.status(403).send("Invalid token");
   }
 
-  // if (!infra_dir) {
-  //   return res.status(400).send("Missing 'infra_dir' in the request.");
-  // }
+  if (!infra_dir) {
+    return res.status(400).send("Missing 'infra_dir' in the request.");
+  }
 
   // Step 1: Trigger the destroy workflow
   const dispatchResponse = await fetch(
