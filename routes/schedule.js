@@ -9,7 +9,7 @@ module.exports = async function (req, res) {
   setTimeout(async () => {
     const approvalLink = `https://${process.env.DOMAIN}/trigger?token=${token}`;
     
-    // ✅ Yahoo SMTP config
+    // Yahoo SMTP config
     const transporter = nodemailer.createTransport({
       host: "smtp.mail.yahoo.com",
       port: 465,
@@ -28,7 +28,7 @@ module.exports = async function (req, res) {
     });
 
     console.log("Approval email sent.");
-  }, 600000); // 1 hour 3600000
+  }, 120000); // 1 hour 3600000
 
   res.send("Destroy email will be sent in 1 hour");
 };

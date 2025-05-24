@@ -3,6 +3,11 @@ const fetch = require("node-fetch");
 module.exports = async function (req, res) {
   const { token, infra_dir } = req.body;
 
+  // Debug the token mismatch
+  console.log("Received token:", `"${token}"`);
+  console.log("Expected token:", `"${process.env.APPROVAL_TOKEN}"`);
+  console.log("Match:", token === process.env.APPROVAL_TOKEN);
+
   if (token !== process.env.APPROVAL_TOKEN) {
     return res.status(403).send("Invalid token");
   }
