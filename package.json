@@ -1,0 +1,20 @@
+{
+"name": "infra-destroyer",
+"version": "1.0.0",
+"description": "Webhook app to send approval emails and trigger Terraform destroy via GitHub Actions",
+"main": "server.js",
+"scripts": {
+    "start": "node server.js"
+},
+"dependencies": {
+    "express": "^4.18.2",
+    "node-fetch": "^2.6.9",
+    "nodemailer": "^6.9.3"
+},
+"engines": {
+    "node": ">=14"
+},
+"keywords": ["terraform", "webhook", "destroy", "render", "github-actions"],
+"author": "Your Name",
+"license": "MIT"
+}
