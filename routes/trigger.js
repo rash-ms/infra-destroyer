@@ -14,6 +14,9 @@ module.exports = async function (req, res) {
     return res.status(403).send("Invalid token");
   }
 
+  if (!infra_dir) {
+    return res.status(400).send("Missing 'infra_dir' in the request.");
+  }
   // Step 1: Trigger the destroy workflow
   const dispatchResponse = await fetch(
     `https://api.github.com/repos/${process.env.REPO}/actions/workflows/aws-infra-destroyer.yaml/dispatches`,
@@ -27,7 +30,7 @@ module.exports = async function (req, res) {
         ref: "main",
         inputs: {
           approved: "yes",
-          infra_dir: infra_dir || "fallback/default",
+          infra_dir: infra_dir,
           environment_name: "notify-auto-approval"
         }
       }),
