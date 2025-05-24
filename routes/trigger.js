@@ -6,7 +6,7 @@ module.exports = async function (req, res) {
   }
 
   const response = await fetch(
-    `https://api.github.com/repos/${process.env.REPO}/actions/workflows/destroy.yml/dispatches`,
+    `https://api.github.com/repos/${process.env.REPO}/actions/workflows/aws-infra-deployer.yaml/dispatches`,
     {
       method: "POST",
       headers: {
