@@ -1,10 +1,10 @@
 const fetch = require("node-fetch");
 
 module.exports = async function (req, res) {
-  const { token, infra_dir } = req.body;
-  
-  // const token = req.body?.token || req.query?.token;
-  // const infra_dir = req.body?.infra_dir || req.query?.infra_dir;
+  // const { token, infra_dir } = req.body;
+
+  const token = req.body?.token || req.query?.token;
+  const infra_dir = req.body?.infra_dir || req.query?.infra_dir;
 
 
   // Debug the token mismatch

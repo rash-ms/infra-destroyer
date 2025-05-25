@@ -23,8 +23,10 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Add these lines before routes
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+// app.use(express.json());
+// app.use(express.urlencoded({ extended: true }));
+app.use(express.json({ strict: false })); // Parse JSON bodies
+app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies
 
 // Import routes
 const scheduleRoute = require("./routes/schedule");
