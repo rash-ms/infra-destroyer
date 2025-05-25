@@ -5,29 +5,25 @@ module.exports = async function (req, res) {
     // Debug incoming request
     console.log("=== REQUEST DEBUG ===");
     console.log("Method:", req.method);
-    console.log("Content-Type:", req.headers['content-type']);
-    console.log("User-Agent:", req.headers['user-agent']);
-    console.log("Raw body:", req.body);
-    console.log("Query params:", req.query);
 
-    // Extract token and infra_dir from all possible sources
+    // Extract token and infra_dir
     let token, infra_dir;
 
-    // Case 1: JSON POST (GitHub Action)
+    // JSON POST (GitHub Action)
     if (req.method === 'POST' && req.headers['content-type']?.includes('application/json')) {
       ({ token, infra_dir } = req.body);
     }
-    // Case 2: Form POST
+    // Form POST
     else if (req.method === 'POST' && req.headers['content-type']?.includes('x-www-form-urlencoded')) {
       token = req.body.token;
       infra_dir = req.body.infra_dir;
     }
-    // Case 3: GET request (email link)
+    // GET request (email link)
     else if (req.method === 'GET') {
       token = req.query.token;
       infra_dir = req.query.infra_dir;
     }
-    // Case 4: Fallback parsing
+    // Fallback parsing
     else {
       try {
         const rawData = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
