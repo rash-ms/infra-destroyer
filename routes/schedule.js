@@ -25,7 +25,7 @@ module.exports = async function (req, res) {
     await transporter.sendMail({
       from: process.env.EMAIL_USERNAME,
       to: process.env.NOTIFY_EMAIL,
-      subject: "Terraform: Click to Destroy Resources",
+      subject: `TF_Resources Destroy: ${process.env.REPO}`,
       text: `Terraform apply succeeded.\n\nClick here to destroy: ${approvalLink}`,
       // Optional HTML version for better formatting
       // <p>Or copy this URL: ${approvalLink}</p>
