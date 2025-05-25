@@ -37,7 +37,7 @@ const scheduleRoute = require("./routes/schedule");
 const triggerRoute = require("./routes/trigger");
 
 app.post("/schedule", scheduleRoute);
-// app.get("/trigger", triggerRoute); // ✅ Make sure it's POST here
+app.get("/trigger", triggerRoute); // ✅ Make sure it's POST here
 app.post("/trigger", triggerRoute);
 
 app.listen(PORT, () => {
