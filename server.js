@@ -27,6 +27,7 @@ const PORT = process.env.PORT || 3000;
 // app.use(express.urlencoded({ extended: true }));
 app.use(express.json({ strict: false })); // Parse JSON bodies
 app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies
+app.use(express.text());
 
 // Import routes
 const scheduleRoute = require("./routes/schedule");
